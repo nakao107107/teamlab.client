@@ -1,3 +1,4 @@
+const path    = require('path')
 
 export default {
   mode: 'universal',
@@ -23,6 +24,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~assets/css/style.default.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -53,5 +55,14 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+
+  resolve: {
+    extensions: ['.js', '.json', '.vue', '.ts'],
+    root: path.resolve(__dirname),
+    alias: {
+      '@': path.resolve(__dirname + '/app'),
+      '~': path.resolve(__dirname + '/app'),
+    },
+  },
 }
