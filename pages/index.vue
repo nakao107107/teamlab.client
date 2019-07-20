@@ -7,6 +7,7 @@
         </div>
       </div>
     </section>
+    {{items}}
     <div class="container">
 
       <div class="row">
@@ -98,7 +99,28 @@
 
 <script>
 
+  import { mapGetters } from 'vuex'
+
   export default {
+
+    /*
+    初回データの読み込み
+    */
+    async fetch ({ error, store })
+    {
+      try {
+        await store.dispatch('items/init')
+      }
+      catch(e) {
+        error({ statusCode: 500 });
+      }
+    },
+
+    computed: {
+
+      ...mapGetters('items', ['items'])
+
+    }
 
 
   }

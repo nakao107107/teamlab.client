@@ -44,15 +44,8 @@ class Resource
 
   async request(options)
   {
-    //awaitになっているが、トークンが切れていない限り通信とか重い処理は走らないのでOK
-    const cognitoSession = await this._ctx.store.dispatch('auth/getCognitoSession')
 
-    const response = await this._axios(Object.assign({
-      headers: {
-        'Authorization': cognitoSession ? cognitoSession.getIdToken().getJwtToken() : null,
-        'X-Api-Key'    : this._ctx.store.state.auth.api_key
-      }
-    }, options))
+    const response = await this._axios(options)
       .catch((err) => err.response)
 
     return this._responseBuilder(response);
@@ -86,7 +79,7 @@ export default (ctx, inject) => {
   inject('resource', () => {
 
     const client = axios.create({
-      baseURL: ctx.store.state.auth.api_url,
+      baseURL: process.env.API_URL,
     })
     return new Resource(client, (res) => new Response(res), ctx);
 

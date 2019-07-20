@@ -1,5 +1,9 @@
 const path    = require('path')
 
+//env読み込み
+require('dotenv').config();
+const {API_URL} = process.env;
+
 export default {
   mode: 'universal',
   /*
@@ -66,4 +70,8 @@ export default {
       '~': path.resolve(__dirname + '/app'),
     },
   },
+
+  env: {
+    API_URL
+  }
 }
