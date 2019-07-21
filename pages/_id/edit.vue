@@ -86,7 +86,7 @@
 
       },
 
-      async deleteAttribute({redirect}){
+      async deleteAttribute(){
 
         try {
           await this.$store.dispatch('items/edit/deleteAttribute')
