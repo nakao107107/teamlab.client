@@ -5,15 +5,15 @@
          class="img-fluid">
     <div class="form-group">
       <label for="name" class="form-label">商品名</label>
-      <input id="name" type="text" class="form-control">
+      <input id="name" type="text" class="form-control" v-model="input.name">
     </div>
     <div class="form-group">
       <label for="desc" class="form-label">商品説明</label>
-      <input id="desc" type="text" class="form-control">
+      <input id="desc" type="text" class="form-control" v-model="input.desc">
     </div>
     <div class="form-group">
       <label for="price" class="form-label">値段</label>
-      <input id="price" type="text" class="form-control">
+      <input id="price" type="text" class="form-control" v-model="input.price">
     </div>
     <div>
       <button class="btn btn-info">商品情報を更新</button>
@@ -24,10 +24,52 @@
 
 <script>
 
+  import { mapGetters } from 'vuex'
+
   export default {
+
+    data(){
+      return {
+        input: {}
+      }
+    },
+
+    created(){
+      // this.accountingだとcategoryでエラーが出るのでidがあるかで判別
+      this.input = {
+
+        name:  this.item.name,
+        desc:  this.item.description,
+        price: this.item.price
+
+      }
+    },
+
+    /*
+    初回データの読み込み
+    */
+    async fetch ({ params, error, store })
+
+    {
+      try {
+        await store.dispatch('items/edit/init', params.id)
+      }
+      catch(e) {
+        error({ statusCode: 500 });
+      }
+    },
+
+
+
+    computed: {
+
+      ...mapGetters('items/edit', ['item'])
+
+    }
 
 
   }
+
 
 </script>
 

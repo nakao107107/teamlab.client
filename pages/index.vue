@@ -57,7 +57,7 @@
     async fetch ({ error, store })
     {
       try {
-        await store.dispatch('items/init')
+        await store.dispatch('items/list/init')
       }
       catch(e) {
         error({ statusCode: 500 });
@@ -70,7 +70,7 @@
 
     computed: {
 
-      ...mapGetters('items', ['items'])
+      ...mapGetters('items/list', ['items'])
 
     }
 
