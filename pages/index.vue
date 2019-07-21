@@ -20,10 +20,7 @@
             <div class="mb-3 mr-3">
               <span class="d-inline-block mr-1">store</span>
               <select class="custom-select w-auto border-0" name="" id="">
-                <option value="">store1</option>
-                <option value="">store2</option>
-                <option value="">store3</option>
-                <option value="">store4</option>
+                <option v-for="store in stores" :key="store.id" :value="store.id">{{store.name}}</option>
               </select>
             </div>
           </header>
@@ -62,7 +59,8 @@
 
     computed: {
 
-      ...mapGetters('items/list', ['items'])
+      ...mapGetters('items/list', ['items']),
+      ...mapGetters('store', ['stores'])
 
     }
 
