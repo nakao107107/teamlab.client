@@ -10,6 +10,7 @@
       </nav>
     </header>
     <nuxt />
+    <notifications width="400"/>
   </div>
 </template>
 

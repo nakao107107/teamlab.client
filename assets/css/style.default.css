@@ -13562,12 +13562,12 @@ a.text-gray-900:hover, a.text-gray-900:focus {
 }
 
 .search-area {
-  width: 100vw;
-  height: 100vh;
+  /*width: 100vw;*/
+  /*height: 100vh;*/
   background: #fff;
-  position: fixed;
-  top: 0;
-  left: 0;
+  /*position: fixed;*/
+  /*top: 0;*/
+  /*left: 0;*/
   z-index: 9999;
 }
 
@@ -13579,9 +13579,9 @@ a.text-gray-900:hover, a.text-gray-900:focus {
 
 .search-area .search-area-input {
   width: 100%;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   outline: none;
-  font-size: 1.2em;
+  /*font-size: 1.2em;*/
   font-weight: 300;
   background: none;
   border: none;
@@ -13589,7 +13589,7 @@ a.text-gray-900:hover, a.text-gray-900:focus {
 }
 
 .search-area .search-area-button {
-  position: absolute;
+  /*position: absolute;*/
   right: 0;
   bottom: 15px;
   background: none;
@@ -13876,6 +13876,7 @@ a.text-gray-900:hover, a.text-gray-900:focus {
 *     Products 
 * ===================================================
 */
+
 .product-grid-header {
   display: -ms-flexbox;
   display: flex;

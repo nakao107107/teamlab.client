@@ -73,6 +73,12 @@
 
         try {
           await this.$store.dispatch('items/edit/saveAttribute', this.input)
+
+          this.$notify({
+            type: 'success',
+            title: '商品情報更新',
+            text: '商品情報の更新に成功しました'
+          });
         }
         catch(e) {
           throw e
@@ -84,9 +90,19 @@
 
         try {
           await this.$store.dispatch('items/edit/deleteAttribute')
-          return redirect('/')
+          this.$notify({
+            type: 'success',
+            title: '商品情報更新',
+            text: '商品情報の更新に成功しました'
+          });
+          this.$router.push('/')
         }
         catch(e) {
+          this.$notify({
+            type: 'error',
+            title: '商品情報更新失敗',
+            text: '商品情報の更新に失敗しました'
+          });
           throw e
         }
 

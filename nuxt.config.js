@@ -34,7 +34,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~plugins/resource.js'
+    '~plugins/resource.js',
+    '~plugins/vue-plugin.client.js'
   ],
   /*
   ** Nuxt.js modules
