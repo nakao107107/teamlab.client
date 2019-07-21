@@ -1,3 +1,8 @@
+const path    = require('path')
+
+//env読み込み
+require('dotenv').config();
+const {API_URL} = process.env;
 
 export default {
   mode: 'universal',
@@ -23,11 +28,14 @@ export default {
   ** Global CSS
   */
   css: [
+    '~assets/css/style.default.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/resource.js',
+    '~plugins/vue-plugin.client.js'
   ],
   /*
   ** Nuxt.js modules
@@ -53,5 +61,18 @@ export default {
     */
     extend(config, ctx) {
     }
+  },
+
+  resolve: {
+    extensions: ['.js', '.json', '.vue', '.ts'],
+    root: path.resolve(__dirname),
+    alias: {
+      '@': path.resolve(__dirname + '/app'),
+      '~': path.resolve(__dirname + '/app'),
+    },
+  },
+
+  env: {
+    API_URL
   }
 }
