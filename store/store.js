@@ -33,13 +33,10 @@ export const mutations = {
 export const actions = {
 
 
-  async fetch({ dispatch, commit })
-  {
+  async fetch({ dispatch, commit }) {
     commit('initState')
     const {headers, data, error} = await this.$resource().get(`/stores`)
     commit('setStores', data)
 
-  },
-
-
+  }
 }

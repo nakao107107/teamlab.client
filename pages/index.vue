@@ -19,12 +19,13 @@
             </div>
             <div class="mb-3 mr-3">
               <span class="d-inline-block mr-1">store</span>
-              <select class="custom-select w-auto border-0" name="" id="">
+              <select class="custom-select w-auto border-0" @change="changeStore">
                 <option v-for="store in stores" :key="store.id" :value="store.id">{{store.name}}</option>
               </select>
             </div>
           </header>
           <!--ここからcomponent化して繰り返し-->
+          <p v-if="items.length == 0" class="text-muted">このstoreにはまだ商品が登録されていません</p>
           <item v-for="item in items" :key="item.id" :item="item"/>
 
         </div>
@@ -62,7 +63,19 @@
       ...mapGetters('items/list', ['items']),
       ...mapGetters('store', ['stores'])
 
+    },
+
+    methods: {
+
+      async changeStore(){
+
+        await this.$store.dispatch('items/list/changeStore', event.target.value)
+
+
+      }
+
     }
+
 
 
   }

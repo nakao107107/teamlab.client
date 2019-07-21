@@ -59,6 +59,12 @@ export const actions = {
     commit('setItems', data)
   },
 
+
+  async changeStore({commit}, store_id){
+    const {headers, data, error} = await this.$resource().get(`/items`, {store_id: store_id})
+    commit('setItems', data)
+  }
+
 }
 
 
