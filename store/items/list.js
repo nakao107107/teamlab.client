@@ -38,7 +38,7 @@ export const actions = {
   async init({ dispatch, commit })
   {
     commit('initState')
-    await dispatch('search')
+    await dispatch('search', {store_id: 1})
   },
 
   /*
@@ -47,7 +47,7 @@ export const actions = {
   async search({ state, commit }, query)
   {
 
-    const {headers, data, error} = await this.$resource().get(`/items`)
+    const {headers, data, error} = await this.$resource().get('/items', query)
 
     // if(data && data.error) {
     //   throw new ResourceError(data.error.code, data.error.message, data.error.detail)
