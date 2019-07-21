@@ -4,7 +4,7 @@
     <div class="col-xl-4 col-sm-6 m-0">
       <div class="product">
         <div class="product-image">
-          <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-5/img/product/serrah-galos-494312-unsplash.95dae512.jpg"
+          <img :src="item.images[0].url"
                alt="product image"
                class="img-fluid">
         </div>

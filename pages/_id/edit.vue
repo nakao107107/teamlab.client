@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-5/img/product/serrah-galos-494312-unsplash.95dae512.jpg"
+    <img :src="item.images[0].url"
          alt="item-img"
-         class="img-fluid">
+         class="img-fluid mb-3">
     <div class="form-group">
       <label for="name" class="form-label">商品名</label>
       <input id="name" type="text" class="form-control" v-model="input.name">
@@ -16,8 +16,8 @@
       <input id="price" type="text" class="form-control" v-model="input.price">
     </div>
     <div>
-      <button class="btn btn-info">商品情報を更新</button>
-      <button class="btn btn-danger">商品を削除</button>
+      <button class="btn btn-info" @click="saveAttribute">商品情報を更新</button>
+      <button class="btn btn-danger" @click="deleteAttribute">商品を削除</button>
     </div>
   </div>
 </template>
@@ -64,6 +64,33 @@
     computed: {
 
       ...mapGetters('items/edit', ['item'])
+
+    },
+
+    methods: {
+
+      async saveAttribute(){
+
+        try {
+          await this.$store.dispatch('items/edit/saveAttribute', this.input)
+        }
+        catch(e) {
+          throw e
+        }
+
+      },
+
+      async deleteAttribute({redirect}){
+
+        try {
+          await this.$store.dispatch('items/edit/deleteAttribute')
+          return redirect('/')
+        }
+        catch(e) {
+          throw e
+        }
+
+      }
 
     }
 

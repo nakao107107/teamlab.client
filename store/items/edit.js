@@ -59,6 +59,25 @@ export const actions = {
     commit('setItem', data)
   },
 
+  /*
+  変更の保存
+  */
+  async saveAttribute({ state, commit }, payload){
+
+    const {headers, data, error} = await this.$resource().put(`/items/${state.item.id}`, payload)
+    commit('setItem', data)
+  },
+
+  /*
+  削除
+  */
+  async deleteAttribute({ state, commit }){
+
+    const {headers, data, error} = await this.$resource().delete(`/items/${state.item.id}`)
+
+  }
+
+
 }
 
 
