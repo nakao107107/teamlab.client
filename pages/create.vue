@@ -69,7 +69,23 @@
 
       async createAttribute(){
 
-        await this.$store.dispatch('items/create/createAttribute', this.input)
+        try {
+          await this.$store.dispatch('items/create/createAttribute', this.input)
+          this.$notify({
+            type: 'success',
+            title: '商品情報作成',
+            text: '商品情報の作成に成功しました'
+          });
+          this.$router.push('/')
+        }
+        catch(e) {
+          this.$notify({
+            type: 'error',
+            title: '商品情報作成失敗',
+            text: '商品情報の作成に失敗しました'
+          });
+          throw e
+        }
 
       }
 
